@@ -123,6 +123,6 @@ Ouverture
 Disclaimer
 ==========
 
-![Bad guy](media/bad.jpg)
+![Bad guy](https://github.com/flesueur/srs/blob/master/media/bad.jpg?raw=true)
 
 _Attention, lui, il l'a fait pour de vrai..._
