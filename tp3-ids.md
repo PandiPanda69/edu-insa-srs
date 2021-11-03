@@ -1,4 +1,4 @@
-# TP5 - Intrusion Detection Systems
+# TP3 - Intrusion Detection Systems
 
 _Sébastien Mériot ([@smeriot](https://twitter.com/smeriot))_
 
