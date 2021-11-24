@@ -43,7 +43,7 @@ _Durée estimée: 2 heures 35 minutes_
 
 Par chance, il semblerait qu'une capture réseau de l'attaque soit disponible car un administrateur système avait laissé `tcpdump` tourner tout le week-end suite à un debug qu'il avait fait jeudi dernier. En effet, le commercial avait des problèmes réseaux et l'administrateur système avait lancer un `tcpdump` pour tenter d'identifier le problème. C'est la seule trace réseau à notre disposition et elle devrait être téléchargeable [ici](https://github.com/PandiPanda69/edu-insa-srs/raw/main/capture.pcap) au format `pcap`.
 
-Les équipes techniques de l'entreprise "Target" nous ont transmis l'architecture de leur réseau afin de mieux interpréter les traces réseau. D'ailleurs, il est précisé que la capture a été réalisée sur l'interface publique.
+Les équipes techniques de l'entreprise "Target" nous ont transmis l'architecture de leur réseau afin de mieux interpréter les traces réseau. D'ailleurs, il est précisé que la capture a été réalisée sur la machine du commercial.
 
 | Machine           | Description                                         | IP     |
 | :-------:         | -----------                                         | :-----: 
