@@ -146,8 +146,9 @@ It is time to report your findings to your customer.
 29. Write the timeline of what happened and explain how the adversary succeed in getting into the systems of the company.
 30. In such situation, it's still valuable to make sure no backdoor have been put by the adversary on any other system. In order to
     perform a large detection, provide all the IoC you may have identified in a table like this :
+    
 | #      | Indicators                          | Type       | Comment |
-| :----: | -----------                         | :-----:    | :-----:|
+| :----: | :-----------:                       | :-----:    | :-----: |
 | 1      | 1.2.3.4                             | IP         | IP used for... |
 | 2      | domain.fr                           | Domain     | Domain name hosting  ... |
 | 3      | https://domain.fr/bad               | URL        | Malicious URL used for ... |
