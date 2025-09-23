@@ -67,7 +67,7 @@ Objectifs de la séance:
 
 L'objectif de cette séance est de pouvoir produire des logs pour les intégrer dans notre SIEM et pouvoir réaliser des scénarios de détection. Pour y parvenir, nous allons mettre en oeuvre un playground avec 2 machines distinctes :
 - une machine hébergeant un serveur web (apache + php)
-- une machine dite _machine d'administration_ ou _[https://en.wikipedia.org/wiki/Jump_server](jump server)_ acceptant des connexions SSH et permettant d'administrer le serveur _Wazuh_ et _web_
+- une machine dite _machine d'administration_ ou _[jump server](https://en.wikipedia.org/wiki/Jump_server)_ acceptant des connexions SSH et permettant d'administrer le serveur _Wazuh_ et _web_
 
 Si vous êtes à l'aise, vous pouvez configurer un réseau virtuel à l'aide de votre hyperviseur (optionnel).
 
