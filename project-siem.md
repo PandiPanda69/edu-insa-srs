@@ -54,3 +54,63 @@ Consultez la section [machine virtuelle](https://documentation.wazuh.com/current
 #### Installation VM
 Procéder à l'installation de votre VM dans [VirtualBox](https://www.virtualbox.org)
 
+
+Séance 2 – Mise en place d'un terrain de jeu
+=====================
+
+Objectifs de la séance:
+- Déployer une petite infrastructure
+- Interconnecter les briques au SIEM
+- Préparer la collecte des logs
+
+### A. Conception du playground
+
+L'objectif de cette séance est de pouvoir produire des logs pour les intégrer dans notre SIEM et pouvoir réaliser des scénarios de détection. Pour y parvenir, nous allons mettre en oeuvre un playground avec 2 machines distinctes :
+- une machine hébergeant un serveur web (apache + php)
+- une machine dite _machine d'administration_ ou _[https://en.wikipedia.org/wiki/Jump_server](jump server)_ acceptant des connexions SSH et permettant d'administrer le serveur _Wazuh_ et _web_
+
+Si vous êtes à l'aise, vous pouvez configurer un réseau virtuel à l'aide de votre hyperviseur (optionnel).
+
+Avant de se lancer dans le déploiement de l'infrastructure, prenez un peu de temps pour faire un schéma de votre petite architecture en précisant les OS choisis, la configuration réseau, ... et en gardant en tête l'objectif qui sera d'envoyer les logs de ces 2 machines sur la machine de Wazuh que vous avez installée précédemment.
+
+### B. Mise en oeuvre
+
+Maintenant que vous avez les idées claires, il est temps de passer au déploiement !
+
+Créez 2 nouvelles machines virtuelle permettant d'accueillir d'un côté le serveur web, de l'autre la machine d'administration.
+
+>[!NOTE]
+> Une machine virtuelle Linux n'a pas besoin de beaucoup de RAM pour fonctionner correctement - 1GB voir 512MB sont largement suffisants si vous vous contentez de la ligne de commande.
+
+Configurez ces machines afin que d'un côté, un serveur web de type apache (avec le module php) soit fonctionnel et de l'autre avoir une machine en capacité de recevoir des connexions SSH.
+
+### C. Configurer la collecte des logs
+
+Dans la documentation de _Wazuh_, prenez le temps de comprendre comment envoyer les logs vers le SIEM avec la notion d'agent.
+Modifiez votre diagramme d'architecture en faisant apparaître la collecte de logs.
+
+
+Séance 3 – Collecte de logs et évènements
+=====================
+
+Objectifs de la séance:
+- Mise en oeuvre des agents pour collecter les logs
+- S'assurer que les logs remontent bien dans le SIEM
+- Se documenter sur la création de règles de détection
+
+
+Séance 4 – Mise en place de règles
+=====================
+
+Objectifs de la séance:
+- Créer des règles de détection
+- Déclencher des évènéments
+- Imaginer un scénario de menace
+
+
+Séance 5 – Un SIEM de pro !
+=====================
+
+Objectifs de la séance:
+- Implémenter le scénario de menace en utilisant la corrélation de logs
+- Utiliser les dashboards
