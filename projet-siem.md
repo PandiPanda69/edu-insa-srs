@@ -16,7 +16,7 @@ Il permet notamment de :
 - Détecter des comportements suspects (intrusions, anomalies, malwares).
 - Fournir des alertes et tableaux de bord pour les administrateurs.
 
-Dans ce projet, nous allons utiliser [Wazuh](https://wazuh.com), une solution open source largement adoptée, qui combine collecte d’événements, analyse de logs, détection d’intrusion et intégration avec des outils de visualisation. Il existe bien entendu beaucoup d'autres solutions de type SIEM plus ou moins onéreuse ([QRadar](https://www.ibm.com/fr-fr/products/qradar-siem) IBM, [Splunk](https://www.splunk.com/fr_fr/blog/learn/siem-security-information-event-management.html) Cisco). 
+Dans ce projet, nous allons utiliser [Wazuh](https://wazuh.com), une solution open source largement adoptée, qui combine collecte d’événements, analyse de logs, détection d’intrusion et intégration avec des outils de visualisation. Il existe bien entendu beaucoup d'autres solutions de type SIEM plus ou moins onéreuses ([QRadar](https://www.ibm.com/fr-fr/products/qradar-siem) IBM, [Splunk](https://www.splunk.com/fr_fr/blog/learn/siem-security-information-event-management.html) Cisco). 
 
 
 Evaluation
@@ -42,14 +42,14 @@ Sélectionnez deux solutions SIEM de votre choix et comparez-les à Wazuh en vou
 
 
 ### B. Architecture
-En entreprise, il est fréquent que les éditeurs proposent une démonstration technique pour présenter les atouts de leur solution, ce qui peut aider à orienter le choix: le notre est celui de Wazuh. 
+En entreprise, il est fréquent que les éditeurs proposent une démonstration technique pour présenter les atouts de leur solution, ce qui peut aider à orienter le choix: le nôtre est celui de Wazuh. 
 
 Consultez la [documentation officielle](https://documentation.wazuh.com/) de Wazuh pour vous familiariser avec son architecture. Repérez les principaux composants, décrivez leur rôle et expliquez comment ces différentes briques techniques interagissent entre elles. Vous pouvez également proposer un schéma pour illustrer l’architecture et les connexions entre les composants.
 
 ### C. Installation
 
 #### Prérequis
-Consultez la section [machine virtuelle](https://documentation.wazuh.com/current/deployment-options/virtual-machine/virtual-machine.html) de la documentation officielle de Wazuh pour identifier les prérequis système nécessaires à l’utilisation du fichier OVA, notamment l’architecture, les ressources matérielles et autres exigences.
+Consultez la section [machine virtuelle](https://documentation.wazuh.com/current/deployment-options/virtual-machine/virtual-machine.html) de la documentation officielle de Wazuh pour identifier les prérequis systèmes nécessaires à l’utilisation du fichier OVA, notamment l’architecture, les ressources matérielles et autres exigences.
 
 #### Installation VM
 Procéder à l'installation de votre VM dans [VirtualBox](https://www.virtualbox.org)
@@ -77,7 +77,7 @@ Avant de se lancer dans le déploiement de l'infrastructure, prenez un peu de te
 
 Maintenant que vous avez les idées claires, il est temps de passer au déploiement !
 
-Créez 2 nouvelles machines virtuelle permettant d'accueillir d'un côté le serveur web, de l'autre la machine d'administration.
+Créez 2 nouvelles machines virtuelles permettant d'accueillir d'un côté le serveur web, de l'autre la machine d'administration.
 
 >[!NOTE]
 > Une machine virtuelle Linux n'a pas besoin de beaucoup de RAM pour fonctionner correctement - 1GB voir 512MB sont largement suffisants si vous vous contentez de la ligne de commande.
@@ -90,7 +90,7 @@ Dans la documentation de _Wazuh_, prenez le temps de comprendre comment envoyer 
 Modifiez votre diagramme d'architecture en faisant apparaître la collecte de logs.
 
 
-Séance 3 – Collecte de logs et évènements
+Séance 3 – Collecte de logs et événements
 =====================
 
 Objectifs de la séance:
