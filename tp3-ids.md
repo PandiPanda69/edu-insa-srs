@@ -1,6 +1,7 @@
 # TP3 - Intrusion Detection Systems
 
 _Sébastien Mériot ([@smeriot](https://twitter.com/smeriot))_
+_Pierre Dubreuil_
 
 _Cet énoncé est en partie inspiré d'un TP créé par François Lesueur ([énoncé original](https://github.com/flesueur/srs/blob/master/tp3-ids.md)) et que nous avons co-animé à l'INSA Lyon il y a quelques mois._
 
