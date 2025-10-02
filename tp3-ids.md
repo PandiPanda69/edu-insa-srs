@@ -110,8 +110,8 @@ http_access deny all
 Puis on relance squid pour prendre en compte les modifications.
 
 ```
-# service squid restart
-# service squid status
+# systemctl restart squid
+# systemctl status squid
 ● squid.service - Squid Web Proxy Server
    Loaded: loaded (/lib/systemd/system/squid.service; enabled; vendor preset: en
    Active: active (running) since Sun 2021-05-02 13:00:17 CEST; 10s ago
@@ -179,17 +179,18 @@ Par défaut, `Suricata` ne contient aucune règle. Afin de pouvoir faire quelque
 
 Dans ce jeu de règle, vous pourrez notamment trouver la règle suivante:
 ```
- alert tcp 10.0.0.1 80 -> 192.168.1.0/24 111 (content:"Waldo"; msg:"Waldo's here";sid:1001;)
+ alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"test eicar"; content:"EICAR"; sid:1001;)
 ```
 
 signifie par exemple que :
-
-* On étudie les paquets TCP allant de `10.0.0.1:80` vers le sous-réseau:port `192.168.1.0/24:111` (__attention, les règles sont orientées et Suricata regarde uniquement les paquets allant de la partie gauche de la règle à la partie droite !__)
+* On étudie les paquets TCP allant de `$EXTERNAL_NET` vers le sous-réseau `$HOME_NET` (__attention, les règles sont orientées et Suricata regarde uniquement les paquets allant de la partie gauche de la règle à la partie droite !__)
 * Contenant la chaîne "Waldo"
 * Le log affichera "Waldo's here" s'il y a une correspondance
 * `alert` peut être remplacé par `drop` pour jeter le paquet au lieu de le journaliser (mode __IPS__)
 * Le `sid` est un identifiant de règle, _il doit être unique_
 * Les règles peuvent être composées de nombreux éléments (contenu, taille, expressions régulières, etc.). Tout est ici : [Règles Suricata](https://suricata.readthedocs.io/en/latest/rules/index.html). [`http_stat_code`](https://suricata.readthedocs.io/en/latest/rules/http-keywords.html#http-stat-code) (avec un _ et non un ., attention) permet par exemple de surveiller le code de retour HTTP et [`threshold`](https://suricata.readthedocs.io/en/latest/rules/thresholding.html) de gérér des seuils. <!-- \url{http://manual.snort.org/node32.html}) -->
+> Note: EICAR (European Institute for Computer Antivirus Research) est un fichier de test standardisé, inoffensif, conçu pour vérifier le bon fonctionnement des antivirus et solutions de sécurité : il simule un malware sans en être un.
+
 
 Lisez les règles présentes dans le fichier `local.rules`. Déclenchez la règle "COMMUNITY WEB-MISC Test Script Access" en accédant au serveur web de la DMZ (`http://www.target.milxc`), par ex. depuis la machine `isp-a-hacker`. La requête est-elle exécutée par le serveur DMZ, malgré l'alerte ?
 
@@ -199,9 +200,9 @@ Lisez les règles présentes dans le fichier `local.rules`. Déclenchez la règl
 De nombreux logiciels malveillants utilisent des _packers_ pour échapper aux signatures des antivirus (entre autre). Le plus connu se nomme [_UPX_](https://upx.github.io/) et il est très facile de faire des signatures permettant de détecter des fichiers en cours de téléchargement ayant été préalablement _packé_ avec _UPX_ : les binaires contiennent la chaîne `Info: This file is packed with the UPX executable packer http://upx.sf.net`.
 Ecrivez une règle afin de détecter quand un fichier packé avec _UPX_ est téléchargé sur le réseau de l'entreprise _target_.
 
-Lorsque vous modifiez les règles, il faut recharger le fichier avec `service suricata reload`. Vous pouvez suivre l'activité de Suricata et l'absence d'erreur à l'intégration des règles dans `/var/log/suricata/suricata.log`.
+Lorsque vous modifiez les règles, il faut recharger le fichier avec `systemctl reload suricata`. Vous pouvez suivre l'activité de Suricata et l'absence d'erreur à l'intégration des règles dans `/var/log/suricata/suricata.log`.
 
-> Pour tester votre règle, vous pouvez trouver des URLs de malwares packés avec _UPX_ ici :  https://urlhaus.abuse.ch/browse/tag/mozi/.
+> Pour tester votre règle, exposer un fichier static respectant le formattage d'un binaire _packé_ avec le serveur web disponible sur `isp-a-hacker`.
 
 > Pour avoir un aperçu du type de règles fournies par défaut avec Suricata, vous pouvez exécuter `suricata-oinkmaster-updater` qui téléchargera des listes de règles dans `/etc/suricata/rules/*.rules`.
 
@@ -211,7 +212,7 @@ Dans la configuration préinstallée, Suricata est en écoute seulement (donc "I
 * Remplacer `--af-packet` par `-q0` dans `/etc/systemd/system/suricata.service`
 * Recharger systemd `systemctl daemon-reload`
 * Utiliser `drop` au lieu de `alert` dans les règles
-* `service suricata restart`
+* `systemctl restart suricata`
 
 Pour ensuite activer le passage des paquets par Suricata, il faut ajouter une décision NFQUEUE au lieu des décision ACCEPT dans les règles IPTables. Par exemple, pour faire passer par Suricata tout le trafic forwardé :
 `iptables -I FORWARD -j NFQUEUE` (attention, suricata prend des décisions définitives, le reste des règles n'est pas appelé ensuite ! [Une solution plus évoluée utilisant les marques et le mode repeat de Suricata existe.](https://docs.mirantis.com/mcp/latest/mcp-security-best-practices/use-cases/idps-vnf/ips-mode/nfq.html))
