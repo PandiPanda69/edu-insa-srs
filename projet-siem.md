@@ -93,7 +93,27 @@ Modifiez votre diagramme d'architecture en faisant apparaître la collecte de lo
 Séance 3 – Collecte de logs et événements
 =====================
 
+Virtualisation et Proxmox 
+=====================
+
+Dans les architectures modernes, la virtualisation occupe une place prépondérante afin de pouvoir
+utiliser au mieux la puissance des machines (comprendre, maximiser l'utilisation du CPU et de la
+RAM afin de rationnaliser les coûts de consommation).
+
+La virtualisation apporte également un avantage de flexibilité considérable puisqu'il est possible
+de créer et de supprimer des machines virtuelles facilement. Fonctionnalité souvent méconnue, les
+hyperviseurs permettent également d'assurer des niveaux de service (SLA) en offrant la possibilité
+de migrer les machines virtuelles à chaud, de façon transparente d'une machine hôte à une autre.
+
+Nous allons nous familiariser avec [KVM](https://fr.wikipedia.org/wiki/Kernel-based_Virtual_Machine) au travers de [Proxmox](https://www.proxmox.com/), des solutions opensource très utilisées. Notamment KVM est la solution de choix pour les différents fournisseurs de Cloud Public (AWS, OVHcloud, Digital Ocean, ...).
+
+Disclaimer
+=====================
+
+A partir de maintenant, vous allez partager une même instance Proxmox pour les différents groupes de TP. Cela vous permettra de voir qu'il est possible de travailler simultanément sur un même hôte physique.
+
 Objectifs de la séance:
+- Récupérer vos identifiants auprès de l'enseignant
 - Mise en oeuvre des agents pour collecter les logs
 - S'assurer que les logs remontent bien dans le SIEM
 - Se documenter sur la création de règles de détection
