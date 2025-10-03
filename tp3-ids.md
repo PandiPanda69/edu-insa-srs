@@ -185,8 +185,8 @@ Dans ce jeu de règle, vous pourrez notamment trouver la règle suivante:
 
 signifie par exemple que :
 * On étudie les paquets TCP allant de `$EXTERNAL_NET` vers le sous-réseau `$HOME_NET` (__attention, les règles sont orientées et Suricata regarde uniquement les paquets allant de la partie gauche de la règle à la partie droite !__)
-* Contenant la chaîne "Waldo"
-* Le log affichera "Waldo's here" s'il y a une correspondance
+* Contenant la chaîne "EICAR"
+* Le log affichera "test eicar" s'il y a une correspondance
 * `alert` peut être remplacé par `drop` pour jeter le paquet au lieu de le journaliser (mode __IPS__)
 * Le `sid` est un identifiant de règle, _il doit être unique_
 * Les règles peuvent être composées de nombreux éléments (contenu, taille, expressions régulières, etc.). Tout est ici : [Règles Suricata](https://suricata.readthedocs.io/en/latest/rules/index.html). [`http_stat_code`](https://suricata.readthedocs.io/en/latest/rules/http-keywords.html#http-stat-code) (avec un _ et non un ., attention) permet par exemple de surveiller le code de retour HTTP et [`threshold`](https://suricata.readthedocs.io/en/latest/rules/thresholding.html) de gérér des seuils. <!-- \url{http://manual.snort.org/node32.html}) -->
