@@ -173,6 +173,7 @@ Cette configuration n'est pas très sécurisée. En effet, un utilisateur peut d
 Mise en place d'un NIDS
 =======================
 
+## Activation des règles `local.rules`
 `Suricata` est un IDPS réseau et nous allons l'utiliser pour illustrer son utilité. Il est installé sur "target-router". Sa configuration est dans `/etc/suricata/suricata.yaml` et nous allons utiliser le fichier de règles `/etc/suricata/rules/local.rules`. Vous pourrez visualiser les alertes dans le fichier de log `/var/log/suricata/fast.log` (`tail -f /var/log/suricata/fast.log` permet de suivre l'évolution des alertes).
 
 Par défaut, `Suricata` ne contient aucune règle. Afin de pouvoir faire quelques tests avec des règles simples, nous allons charger des règles fournies par défaut. Dans le fichier `/etc/suricata/suricata.yaml`, rechercher le paramètre de configuration `rule-files`. Une entrée `suricata.rules` est déjà présente. En dessous, rajouter de façon similaire une entrée `local.rules` afin de pouvoir charger ce jeu de règles également puis recharger Suricata afin d'appliquer la nouvelle configuration.
@@ -191,12 +192,12 @@ signifie par exemple que :
 * Les règles peuvent être composées de nombreux éléments (contenu, taille, expressions régulières, etc.). Tout est ici : [Règles Suricata](https://suricata.readthedocs.io/en/latest/rules/index.html). [`http_stat_code`](https://suricata.readthedocs.io/en/latest/rules/http-keywords.html#http-stat-code) (avec un _ et non un ., attention) permet par exemple de surveiller le code de retour HTTP et [`threshold`](https://suricata.readthedocs.io/en/latest/rules/thresholding.html) de gérér des seuils. <!-- \url{http://manual.snort.org/node32.html}) -->
 > Note: EICAR (European Institute for Computer Antivirus Research) est un fichier de test standardisé, inoffensif, conçu pour vérifier le bon fonctionnement des antivirus et solutions de sécurité : il simule un malware sans en être un.
 
-
+## Premier déclenchement
 Lisez les règles présentes dans le fichier `local.rules`. Déclenchez la règle "COMMUNITY WEB-MISC Test Script Access" en accédant au serveur web de la DMZ (`http://www.target.milxc`), par ex. depuis la machine `isp-a-hacker`. La requête est-elle exécutée par le serveur DMZ, malgré l'alerte ?
 
 > Attention: Suite au précédent TP, assurez-vous que l'entrée DNS de `http://www.target.milxc` est correcte et pointe bien vers `100.80.1.2`.
 
-
+## Nouvelle règle UPX
 De nombreux logiciels malveillants utilisent des _packers_ pour échapper aux signatures des antivirus (entre autre). Le plus connu se nomme [_UPX_](https://upx.github.io/) et il est très facile de faire des signatures permettant de détecter des fichiers en cours de téléchargement ayant été préalablement _packé_ avec _UPX_ : les binaires contiennent la chaîne `Info: This file is packed with the UPX executable packer http://upx.sf.net`.
 Ecrivez une règle afin de détecter quand un fichier packé avec _UPX_ est téléchargé sur le réseau de l'entreprise _target_.
 
