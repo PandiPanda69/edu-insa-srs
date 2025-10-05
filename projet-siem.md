@@ -120,7 +120,7 @@ Nous allons nous familiariser avec [KVM](https://fr.wikipedia.org/wiki/Kernel-ba
 >[Note]
 >A partir de maintenant, vous allez partager une même instance Proxmox pour les différents groupes de TP. Cela vous permettra de voir qu'il est possible de travailler simultanément sur un même hôte physique.
 
-Après avoir récupérer vos accès auprès de l'enseignant, connectez-vous aux différentes machines composant votre infrastructure pour déployer l'agent. 
+Après avoir récupéré vos accès auprès de l'enseignant, connectez-vous aux différentes machines composant votre infrastructure pour déployer l'agent. 
 Les logs remontant désormais dans votre SIEM, explorer les différentes façons de créer une règle de détection.
 
 Séance 4 – Mise en place de règles
@@ -145,7 +145,7 @@ Objectifs de la séance:
 
 Dans cette séance, nous allons passer à un niveau supérieur en exploitant les capacités avancées de corrélation du SIEM. Plutôt que de détecter un seul événement isolé, vous allez maintenant combiner plusieurs événements issus de différentes sources pour identifier un scénario plus complexe et représentatif d'un incident potentiel.
 >[Note]
->L’objectif est de mettre en évidence que votre SIEM peut transformer une masse de logs bruts en informations exploitables pour caractériser un scénario complexe.
+>L’objectif est de mettre en évidence que votre SIEM peut transformer une masse de logs bruts en informations exploitables pour caractériser un scénario complexe. Vous êtes encouragés à être créatifs : un scénario réaliste peut nécessiter d’ajouter des services, de modifier des configurations ou d’introduire des conditions initiales (compte compromis, fichier de credentials, vulnérabilité simulée…).
 
 ***
 
@@ -153,4 +153,17 @@ Evaluation
 =====================
 
 L'évaluation se décomposera en plusieurs éléments qui formeront une seule note finale. 
- <WIP>
+### Préparation préliminaires (6 points)
+- Benchmark de solutions de types SIEM
+- Architecture interne de Wazuh
+- Description de l'infrastructure mise à disposition à travers le projet
+
+### Mise en oeuvre de règles simples (6 points)
+- Description des flux de log à disposition
+- Implémentation d'une ou plusieurs règles simples associées
+- Déclenchement de vos règles avec éléments de visualisation
+
+### Scénario de menace (8 points)
+- Description et implémentation d'un scénario de menace réaliste
+- Mise en peuvre d'une règle avec agrégation de log
+- Dashboard de supervision autour des services liés au scénario
