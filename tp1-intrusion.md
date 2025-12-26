@@ -1,6 +1,7 @@
 # TP 1 : Intrusion
 
 _Sébastien Mériot_ ([@smeriot](https://twitter.com/smeriot))
+_Pierre Dubreuil_
 
 _Cet énoncé est très très très fortement inspiré d'un TP créé par François Lesueur ([énoncé original](https://github.com/flesueur/srs/blob/master/tp1-intrusion.md))._
 
